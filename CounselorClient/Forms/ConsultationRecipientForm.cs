@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CounselorClient
+namespace CounselorClient.Forms
 {
-    public partial class Form1 : Form
+    public partial class ConsultationRecipientForm : Form
     {
-        public Form1()
+        public ConsultationRecipientForm()
         {
             InitializeComponent();
         }
