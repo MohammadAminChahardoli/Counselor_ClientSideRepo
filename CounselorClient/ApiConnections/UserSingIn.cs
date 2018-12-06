@@ -14,7 +14,7 @@ namespace CounselorClient.ApiConnections
         private IApiResponseObserver SignInObserver;
         private RestClient Client;
         private string BaseUrl = "https://mshf.ir/api/";
-        private string SignUpUrl = "v1/userssignin/";
+        private string SignUpUrl = "v1/userslogin";
 
         public UserSingIn()
         {
@@ -22,10 +22,10 @@ namespace CounselorClient.ApiConnections
             Client.AddDefaultHeader("token", "aiteam2018");
         }
 
-        public void SignIn(User user)
+        public void SignIn(SignInModel info)
         {
             var request = new RestRequest(SignUpUrl, Method.POST);
-            request.AddParameter("application/json; charset=utf-8", JsonConvert.SerializeObject(user), ParameterType.RequestBody);
+            request.AddParameter("application/json; charset=utf-8", JsonConvert.SerializeObject(info), ParameterType.RequestBody);
             var asyncHandle = Client.ExecuteAsync<int>(request, response =>
             {
                 NotifyObserver(response.Data);

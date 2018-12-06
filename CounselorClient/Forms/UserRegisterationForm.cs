@@ -19,6 +19,7 @@ namespace CounselorClient.Forms
         {
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
+            comboBoxRoleType.SelectedIndex = 0;
         }
 
         private void linkLabelSignIn_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -26,18 +27,17 @@ namespace CounselorClient.Forms
             this.Hide();
             SignInForm signInForm = new SignInForm();
             signInForm.Show();
-            
+
         }
 
         private void buttonSignUp_Click(object sender, EventArgs e)
         {
-            //this.Hide();
-            //ConsultationRecipientForm recipientForm = new ConsultationRecipientForm();
-            //recipientForm.Show();
-
             UserSignUp = new UserSignUp();
             UserSignUp.Attach(this);
-            SignUp(GetUserModel());
+            if (ValidateUserInfo(GetUserModel()))
+                SignUp(GetUserModel());
+            else
+                MessageBox.Show("لطفا همه مقادیر را وارد نمایید");
         }
 
         private void SignUp(User newUser)
@@ -48,16 +48,30 @@ namespace CounselorClient.Forms
 
         private User GetUserModel()
         {
-            return new User
+            User newUser = new User
             {
-                RoleId = 1,
-                FirstName = "MohamadAmin",
-                LastName = "Chahardoli",
-                Age = 22,
-                Majore = "Software Engiring",
-                UserName = "MAC139709",
-                Password = "654321"
+                RoleId = comboBoxRoleType.SelectedIndex,
+                FirstName = textBoxName.Text,
+                LastName = textBoxFamily.Text,
+                Age = textBoxAge.Text != string.Empty? int.Parse(textBoxAge.Text) : 0,
+                Majore = textBoxMajore.Text,
+                UserName = textBoxUserName.Text,
+                Password = textBoxPassword.Text
             };
+
+            return newUser;
+        }
+
+        private bool ValidateUserInfo(User user)
+        {
+            return
+                (user.FirstName != string.Empty &&
+                user.LastName != string.Empty &&
+                user.Age > 0 &&
+                user.Majore != string.Empty &&
+                user.UserName != string.Empty &&
+                user.Password != string.Empty &&
+                user.RoleId != 0);
         }
 
         public void OnResponse<T>(T response)
@@ -66,20 +80,27 @@ namespace CounselorClient.Forms
             labelWating.Visible = false;
             if (result > 0)
             {
-                MessageBox.Show("Successful.");
+                this.Invoke(new Action(() =>
+                {
+                    this.Hide();
+                    ConsultationRecipientForm recipientForm = new ConsultationRecipientForm();
+                    recipientForm.Show();
+                }));
+            
             }
-            else if (result == 0)
+            else if (result == (int)SignUpStatus.AlreadyRegistered)
             {
-                MessageBox.Show("You are already signed up.");
+                MessageBox.Show("شما قبلا ثبت نام کرده اید");
             }
-            else if (result == -1)
+            else if (result == (int)SignUpStatus.Exception)
             {
-                MessageBox.Show("Somthing bad happend.");
+                MessageBox.Show("خطایی رخ داده");
             }
-            else
-            {
-                MessageBox.Show("Nothing.");
-            }
+        }
+
+        private void UserRegisterationForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

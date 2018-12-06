@@ -36,6 +36,7 @@
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.labelUserName = new System.Windows.Forms.Label();
             this.textBoxUserName = new System.Windows.Forms.TextBox();
+            this.labelWating = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelRegisterCaption
@@ -122,12 +123,24 @@
             this.textBoxUserName.TabIndex = 17;
             this.textBoxUserName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // labelWating
+            // 
+            this.labelWating.AutoSize = true;
+            this.labelWating.ForeColor = System.Drawing.Color.Gold;
+            this.labelWating.Location = new System.Drawing.Point(87, 271);
+            this.labelWating.Name = "labelWating";
+            this.labelWating.Size = new System.Drawing.Size(153, 22);
+            this.labelWating.TabIndex = 24;
+            this.labelWating.Text = "کاربر گرامی لطفا منتظر بمانید.";
+            this.labelWating.Visible = false;
+            // 
             // SignInForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(334, 461);
+            this.Controls.Add(this.labelWating);
             this.Controls.Add(this.linkLabelSignUp);
             this.Controls.Add(this.labelٌ1);
             this.Controls.Add(this.buttonSignIn);
@@ -158,5 +171,6 @@
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.Label labelUserName;
         private System.Windows.Forms.TextBox textBoxUserName;
+        private System.Windows.Forms.Label labelWating;
     }
 }

@@ -45,6 +45,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.linkLabelSignIn = new System.Windows.Forms.LinkLabel();
             this.labelWating = new System.Windows.Forms.Label();
+            this.comboBoxRoleType = new System.Windows.Forms.ComboBox();
+            this.labelRoleType = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelRegisterCaption
@@ -55,14 +57,14 @@
             this.labelRegisterCaption.Font = new System.Drawing.Font("IRANSans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.labelRegisterCaption.Location = new System.Drawing.Point(-5, -2);
             this.labelRegisterCaption.Name = "labelRegisterCaption";
-            this.labelRegisterCaption.Size = new System.Drawing.Size(339, 43);
+            this.labelRegisterCaption.Size = new System.Drawing.Size(351, 43);
             this.labelRegisterCaption.TabIndex = 0;
             this.labelRegisterCaption.Text = "ثبت نام";
             this.labelRegisterCaption.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(52, 64);
+            this.textBoxName.Location = new System.Drawing.Point(52, 101);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(183, 29);
             this.textBoxName.TabIndex = 1;
@@ -71,7 +73,7 @@
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(251, 71);
+            this.labelName.Location = new System.Drawing.Point(251, 108);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(23, 22);
             this.labelName.TabIndex = 2;
@@ -80,7 +82,7 @@
             // labelFamily
             // 
             this.labelFamily.AutoSize = true;
-            this.labelFamily.Location = new System.Drawing.Point(251, 120);
+            this.labelFamily.Location = new System.Drawing.Point(251, 157);
             this.labelFamily.Name = "labelFamily";
             this.labelFamily.Size = new System.Drawing.Size(71, 22);
             this.labelFamily.TabIndex = 4;
@@ -88,7 +90,7 @@
             // 
             // textBoxFamily
             // 
-            this.textBoxFamily.Location = new System.Drawing.Point(52, 113);
+            this.textBoxFamily.Location = new System.Drawing.Point(52, 150);
             this.textBoxFamily.Name = "textBoxFamily";
             this.textBoxFamily.Size = new System.Drawing.Size(183, 29);
             this.textBoxFamily.TabIndex = 3;
@@ -97,7 +99,7 @@
             // labelMajore
             // 
             this.labelMajore.AutoSize = true;
-            this.labelMajore.Location = new System.Drawing.Point(253, 165);
+            this.labelMajore.Location = new System.Drawing.Point(253, 202);
             this.labelMajore.Name = "labelMajore";
             this.labelMajore.Size = new System.Drawing.Size(78, 22);
             this.labelMajore.TabIndex = 6;
@@ -105,7 +107,7 @@
             // 
             // textBoxMajore
             // 
-            this.textBoxMajore.Location = new System.Drawing.Point(52, 162);
+            this.textBoxMajore.Location = new System.Drawing.Point(52, 199);
             this.textBoxMajore.Name = "textBoxMajore";
             this.textBoxMajore.Size = new System.Drawing.Size(183, 29);
             this.textBoxMajore.TabIndex = 5;
@@ -114,7 +116,7 @@
             // labelAge
             // 
             this.labelAge.AutoSize = true;
-            this.labelAge.Location = new System.Drawing.Point(253, 215);
+            this.labelAge.Location = new System.Drawing.Point(253, 252);
             this.labelAge.Name = "labelAge";
             this.labelAge.Size = new System.Drawing.Size(28, 22);
             this.labelAge.TabIndex = 8;
@@ -122,7 +124,7 @@
             // 
             // textBoxAge
             // 
-            this.textBoxAge.Location = new System.Drawing.Point(52, 208);
+            this.textBoxAge.Location = new System.Drawing.Point(52, 245);
             this.textBoxAge.Name = "textBoxAge";
             this.textBoxAge.Size = new System.Drawing.Size(183, 29);
             this.textBoxAge.TabIndex = 7;
@@ -131,7 +133,7 @@
             // labelUserName
             // 
             this.labelUserName.AutoSize = true;
-            this.labelUserName.Location = new System.Drawing.Point(253, 257);
+            this.labelUserName.Location = new System.Drawing.Point(253, 294);
             this.labelUserName.Name = "labelUserName";
             this.labelUserName.Size = new System.Drawing.Size(56, 22);
             this.labelUserName.TabIndex = 10;
@@ -139,7 +141,7 @@
             // 
             // textBoxUserName
             // 
-            this.textBoxUserName.Location = new System.Drawing.Point(52, 254);
+            this.textBoxUserName.Location = new System.Drawing.Point(52, 291);
             this.textBoxUserName.Name = "textBoxUserName";
             this.textBoxUserName.Size = new System.Drawing.Size(183, 29);
             this.textBoxUserName.TabIndex = 9;
@@ -148,7 +150,7 @@
             // labelPassword
             // 
             this.labelPassword.AutoSize = true;
-            this.labelPassword.Location = new System.Drawing.Point(253, 311);
+            this.labelPassword.Location = new System.Drawing.Point(253, 348);
             this.labelPassword.Name = "labelPassword";
             this.labelPassword.Size = new System.Drawing.Size(48, 22);
             this.labelPassword.TabIndex = 12;
@@ -156,7 +158,7 @@
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(52, 304);
+            this.textBoxPassword.Location = new System.Drawing.Point(52, 341);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(183, 29);
             this.textBoxPassword.TabIndex = 11;
@@ -164,7 +166,7 @@
             // 
             // buttonSignUp
             // 
-            this.buttonSignUp.Location = new System.Drawing.Point(100, 356);
+            this.buttonSignUp.Location = new System.Drawing.Point(100, 393);
             this.buttonSignUp.Name = "buttonSignUp";
             this.buttonSignUp.Size = new System.Drawing.Size(117, 31);
             this.buttonSignUp.TabIndex = 13;
@@ -179,9 +181,9 @@
             this.label1.BackColor = System.Drawing.Color.Snow;
             this.label1.Font = new System.Drawing.Font("IRANSans", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label1.ForeColor = System.Drawing.Color.DarkSeaGreen;
-            this.label1.Location = new System.Drawing.Point(-35, 418);
+            this.label1.Location = new System.Drawing.Point(-35, 455);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(381, 53);
+            this.label1.Size = new System.Drawing.Size(393, 53);
             this.label1.TabIndex = 14;
             this.label1.Text = "      کاربر گرامی اگر قبلا ثبت نام کرده اید، وارد شوید.";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -191,7 +193,7 @@
             this.linkLabelSignIn.AutoSize = true;
             this.linkLabelSignIn.BackColor = System.Drawing.Color.Linen;
             this.linkLabelSignIn.Font = new System.Drawing.Font("IRANSans", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.linkLabelSignIn.Location = new System.Drawing.Point(29, 434);
+            this.linkLabelSignIn.Location = new System.Drawing.Point(29, 471);
             this.linkLabelSignIn.Name = "linkLabelSignIn";
             this.linkLabelSignIn.Size = new System.Drawing.Size(95, 18);
             this.linkLabelSignIn.TabIndex = 16;
@@ -203,19 +205,43 @@
             // 
             this.labelWating.AutoSize = true;
             this.labelWating.ForeColor = System.Drawing.Color.Gold;
-            this.labelWating.Location = new System.Drawing.Point(86, 396);
+            this.labelWating.Location = new System.Drawing.Point(86, 433);
             this.labelWating.Name = "labelWating";
             this.labelWating.Size = new System.Drawing.Size(153, 22);
             this.labelWating.TabIndex = 17;
             this.labelWating.Text = "کاربر گرامی لطفا منتظر بمانید.";
             this.labelWating.Visible = false;
             // 
+            // comboBoxRoleType
+            // 
+            this.comboBoxRoleType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxRoleType.FormattingEnabled = true;
+            this.comboBoxRoleType.Items.AddRange(new object[] {
+            "انتخاب نمایید...",
+            "مشاور",
+            "مشاوره گیرنده"});
+            this.comboBoxRoleType.Location = new System.Drawing.Point(52, 53);
+            this.comboBoxRoleType.Name = "comboBoxRoleType";
+            this.comboBoxRoleType.Size = new System.Drawing.Size(183, 30);
+            this.comboBoxRoleType.TabIndex = 18;
+            // 
+            // labelRoleType
+            // 
+            this.labelRoleType.AutoSize = true;
+            this.labelRoleType.Location = new System.Drawing.Point(251, 61);
+            this.labelRoleType.Name = "labelRoleType";
+            this.labelRoleType.Size = new System.Drawing.Size(98, 22);
+            this.labelRoleType.TabIndex = 19;
+            this.labelRoleType.Text = "نوع حساب کاربری";
+            // 
             // UserRegisterationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(334, 461);
+            this.ClientSize = new System.Drawing.Size(346, 506);
+            this.Controls.Add(this.labelRoleType);
+            this.Controls.Add(this.comboBoxRoleType);
             this.Controls.Add(this.labelWating);
             this.Controls.Add(this.linkLabelSignIn);
             this.Controls.Add(this.label1);
@@ -240,6 +266,7 @@
             this.Name = "UserRegisterationForm";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.UserRegisterationForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -264,5 +291,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel linkLabelSignIn;
         private System.Windows.Forms.Label labelWating;
+        private System.Windows.Forms.ComboBox comboBoxRoleType;
+        private System.Windows.Forms.Label labelRoleType;
     }
 }
