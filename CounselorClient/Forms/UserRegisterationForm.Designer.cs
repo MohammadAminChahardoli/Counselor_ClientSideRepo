@@ -44,6 +44,7 @@
             this.buttonSignUp = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.linkLabelSignIn = new System.Windows.Forms.LinkLabel();
+            this.labelWating = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelRegisterCaption
@@ -198,12 +199,24 @@
             this.linkLabelSignIn.Text = "ورود به حساب کاربری";
             this.linkLabelSignIn.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelSignIn_LinkClicked);
             // 
+            // labelWating
+            // 
+            this.labelWating.AutoSize = true;
+            this.labelWating.ForeColor = System.Drawing.Color.Gold;
+            this.labelWating.Location = new System.Drawing.Point(86, 396);
+            this.labelWating.Name = "labelWating";
+            this.labelWating.Size = new System.Drawing.Size(153, 22);
+            this.labelWating.TabIndex = 17;
+            this.labelWating.Text = "کاربر گرامی لطفا منتظر بمانید.";
+            this.labelWating.Visible = false;
+            // 
             // UserRegisterationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(334, 461);
+            this.Controls.Add(this.labelWating);
             this.Controls.Add(this.linkLabelSignIn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonSignUp);
@@ -250,5 +263,6 @@
         private System.Windows.Forms.Button buttonSignUp;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel linkLabelSignIn;
+        private System.Windows.Forms.Label labelWating;
     }
 }

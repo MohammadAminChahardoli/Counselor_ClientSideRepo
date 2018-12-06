@@ -33,8 +33,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RestSharp, Version=106.5.4.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.5.4\lib\net452\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,6 +55,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiConnections\IApiResponseObserver.cs" />
+    <Compile Include="ApiConnections\UserSignUp.cs" />
+    <Compile Include="ApiConnections\UserSingIn.cs" />
     <Compile Include="Forms\ConsulatorForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +82,7 @@
     <Compile Include="Forms\UserRegisterationForm.Designer.cs">
       <DependentUpon>UserRegisterationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\JsonHandler.cs" />
     <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\Chat.cs" />
     <Compile Include="Models\Job.cs" />
@@ -105,6 +118,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="ClassDiagram1.cd" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -10,3 +10,8 @@ C:\Users\MohamadAmin\Desktop\CounselorClient\CounselorClient\obj\Debug\Counselor
 C:\Users\MohamadAmin\Desktop\CounselorClient\CounselorClient\obj\Debug\CounselorClient.csprojResolveAssemblyReference.cache
 C:\Users\MohamadAmin\Desktop\CounselorClient\CounselorClient\obj\Debug\CounselorClient.Forms.ConsultationRecipientForm.resources
 C:\Users\MohamadAmin\Desktop\CounselorClient\CounselorClient\obj\Debug\CounselorClient.Forms.ConsulatorForm.resources
+C:\Users\MohamadAmin\Desktop\CounselorClient\CounselorClient\bin\Debug\Newtonsoft.Json.dll
+C:\Users\MohamadAmin\Desktop\CounselorClient\CounselorClient\bin\Debug\Newtonsoft.Json.pdb
+C:\Users\MohamadAmin\Desktop\CounselorClient\CounselorClient\bin\Debug\Newtonsoft.Json.xml
+C:\Users\MohamadAmin\Desktop\CounselorClient\CounselorClient\bin\Debug\RestSharp.dll
+C:\Users\MohamadAmin\Desktop\CounselorClient\CounselorClient\bin\Debug\RestSharp.xml
