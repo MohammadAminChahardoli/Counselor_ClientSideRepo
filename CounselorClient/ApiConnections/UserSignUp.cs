@@ -43,7 +43,7 @@ namespace CounselorClient.ApiConnections
 
         private void NotifyObserver(int result)
         {
-            SignUpObserver.OnResponse<int>(result);
+            SignUpObserver.OnResponse(result, RequestCodes.UserSignedUp);
         }
     }
 }

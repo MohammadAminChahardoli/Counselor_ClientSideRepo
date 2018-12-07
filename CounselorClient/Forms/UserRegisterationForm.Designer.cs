@@ -266,7 +266,6 @@
             this.Name = "UserRegisterationForm";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Load += new System.EventHandler(this.UserRegisterationForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

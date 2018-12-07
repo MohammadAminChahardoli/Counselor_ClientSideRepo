@@ -53,7 +53,7 @@ namespace CounselorClient.Forms
                 RoleId = comboBoxRoleType.SelectedIndex,
                 FirstName = textBoxName.Text,
                 LastName = textBoxFamily.Text,
-                Age = textBoxAge.Text != string.Empty? int.Parse(textBoxAge.Text) : 0,
+                Age = textBoxAge.Text != string.Empty ? int.Parse(textBoxAge.Text) : 0,
                 Majore = textBoxMajore.Text,
                 UserName = textBoxUserName.Text,
                 Password = textBoxPassword.Text
@@ -74,33 +74,56 @@ namespace CounselorClient.Forms
                 user.RoleId != 0);
         }
 
-        public void OnResponse<T>(T response)
+        private void GetRoleType(int userId)
         {
-            int result = int.Parse(response.ToString());
-            labelWating.Visible = false;
-            if (result > 0)
-            {
-                this.Invoke(new Action(() =>
-                {
-                    this.Hide();
-                    ConsultationRecipientForm recipientForm = new ConsultationRecipientForm();
-                    recipientForm.Show();
-                }));
-            
-            }
-            else if (result == (int)SignUpStatus.AlreadyRegistered)
-            {
-                MessageBox.Show("شما قبلا ثبت نام کرده اید");
-            }
-            else if (result == (int)SignUpStatus.Exception)
-            {
-                MessageBox.Show("خطایی رخ داده");
-            }
+            UserRoleType userRoleType = new UserRoleType();
+            userRoleType.Attach(this);
+            userRoleType.GetUserRoleId(userId);
         }
 
-        private void UserRegisterationForm_Load(object sender, EventArgs e)
+        public void OnResponse(object response, RequestCodes requestCode)
         {
+            if (requestCode == RequestCodes.UserSignedUp)
+            {
+                int result = int.Parse(response.ToString());
+                if (result > 0)
+                {
+                    Program.UserId = int.Parse(response.ToString());
+                    GetRoleType(userId: int.Parse(response.ToString()));
+                }
+                else if (result == (int)SignUpStatus.AlreadyRegistered)
+                {
+                    MessageBox.Show("شما قبلا ثبت نام کرده اید");
+                }
+                else if (result == (int)SignUpStatus.Exception)
+                {
+                    MessageBox.Show("خطایی رخ داده");
+                }
+            }
+            else if (requestCode == RequestCodes.RoleTypeReceived)
+            {
+                labelWating.Visible = false;
 
+                int result = int.Parse(response.ToString());
+                if (result == (int)RoleTypes.CounseltorRole)
+                {
+                    this.Invoke(new Action(() =>
+                    {
+                        this.Hide();
+                        ConsulatorForm consulatorForm = new ConsulatorForm();
+                        consulatorForm.Show();
+                    }));
+                }
+                else if (result == (int)RoleTypes.CounselorRecipentRole || result == (int)RoleTypes.RobotRole)
+                {
+                    this.Invoke(new Action(() =>
+                    {
+                        this.Hide();
+                        ConsultationRecipientForm recipientForm = new ConsultationRecipientForm();
+                        recipientForm.Show();
+                    }));
+                }
+            }
         }
     }
 }

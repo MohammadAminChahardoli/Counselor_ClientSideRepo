@@ -8,6 +8,6 @@ namespace CounselorClient.ApiConnections
 {
     interface IApiResponseObserver
     {
-        void OnResponse<T>(T response);
+        void OnResponse(object response, RequestCodes requestCode);
     }
 }

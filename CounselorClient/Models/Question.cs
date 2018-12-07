@@ -8,20 +8,10 @@ namespace CounselorClient.Models
 {
     class Question
     {
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public string Key { get; set; }
+        public string QuestionId { get; set; }
+        public string QuestionTitle { get; set; }
+        public string QuestionKey { get; set; }
 
-        internal Answer Answer
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-
-            set
-            {
-            }
-        }
+        
     }
 }

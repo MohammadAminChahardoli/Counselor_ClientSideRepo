@@ -44,25 +44,6 @@ namespace CounselorClient.Forms
                 MessageBox.Show("لطفا همه مقادیر را به درستی واردی نمایید");
         }
 
-        public void OnResponse<T>(T response)
-        {
-            int result = int.Parse(response.ToString());
-            labelWating.Visible = false;
-            if (result > 0)
-            {
-                this.Invoke(new Action(() =>
-                {
-                    this.Hide();
-                    ConsultationRecipientForm recipientForm = new ConsultationRecipientForm();
-                    recipientForm.Show();
-                }));
-            }
-            else if (result == (int)LoginStatus.WrongPasswordOrUserName)
-            {
-                MessageBox.Show("نام کاربری یا گذرواژه اشتباه است");
-            }
-        }
-
         private SignInModel GetUserInfo()
         {
             return new SignInModel
@@ -77,6 +58,53 @@ namespace CounselorClient.Forms
             return
                 (textBoxUserName.Text != string.Empty &&
                 textBoxPassword.Text != string.Empty);
+        }
+
+        public void OnResponse(object response, RequestCodes requestCode)
+        {
+            if(requestCode == RequestCodes.UserSignedIn)
+            {
+                int result = int.Parse(response.ToString());
+                if (result > 0)
+                {
+                    Program.UserId = int.Parse(response.ToString());
+                    this.Invoke(new Action(() =>
+                    {
+                        this.Hide();
+                        ConsultationRecipientForm recipientForm = new ConsultationRecipientForm();
+                        recipientForm.Show();
+                    }));
+                }
+                else if (result == (int)LoginStatus.WrongPasswordOrUserName)
+                {
+                    MessageBox.Show("نام کاربری یا گذرواژه اشتباه است");
+                }
+            }
+            else if (requestCode == RequestCodes.RoleTypeReceived)
+            {
+                labelWating.Visible = false;
+
+                int result = int.Parse(response.ToString());
+                if (result == (int)RoleTypes.CounseltorRole)
+                {
+                    this.Invoke(new Action(() =>
+                    {
+                        this.Hide();
+                        ConsulatorForm consulatorForm = new ConsulatorForm();
+                        consulatorForm.Show();
+                    }));
+                }
+                else if (result == (int)RoleTypes.CounselorRecipentRole || result == (int)RoleTypes.RobotRole)
+                {
+                    this.Invoke(new Action(() =>
+                    {
+                        this.Hide();
+                        ConsultationRecipientForm recipientForm = new ConsultationRecipientForm();
+                        recipientForm.Show();
+                    }));
+                }
+            }
+
         }
     }
 }

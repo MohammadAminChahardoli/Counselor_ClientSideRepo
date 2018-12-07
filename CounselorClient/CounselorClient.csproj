@@ -56,8 +56,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiConnections\IApiResponseObserver.cs" />
+    <Compile Include="ApiConnections\QuestionsDownloader.cs" />
+    <Compile Include="ApiConnections\UserRoleType.cs" />
+    <Compile Include="ApiConnections\UsersDownloader.cs" />
     <Compile Include="ApiConnections\UserSignUp.cs" />
     <Compile Include="ApiConnections\UserSingIn.cs" />
+    <Compile Include="Enums\RequestCodes.cs" />
+    <Compile Include="Enums\RoleTypes.cs" />
     <Compile Include="Enums\SignInStatus.cs" />
     <Compile Include="Enums\SignUpStatus.cs" />
     <Compile Include="Forms\ConsulatorForm.cs">
