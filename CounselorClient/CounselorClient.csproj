@@ -55,12 +55,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiConnections\AnswersDownloader.cs" />
+    <Compile Include="ApiConnections\ChatDownloader.cs" />
+    <Compile Include="ApiConnections\ChatUploader.cs" />
     <Compile Include="ApiConnections\IApiResponseObserver.cs" />
+    <Compile Include="ApiConnections\MessageDownloader.cs" />
     <Compile Include="ApiConnections\QuestionsDownloader.cs" />
+    <Compile Include="ApiConnections\RecipentChatDownloader.cs" />
     <Compile Include="ApiConnections\UserRoleType.cs" />
     <Compile Include="ApiConnections\UsersDownloader.cs" />
     <Compile Include="ApiConnections\UserSignUp.cs" />
     <Compile Include="ApiConnections\UserSingIn.cs" />
+    <Compile Include="Classes\NetworkConnection.cs" />
     <Compile Include="Enums\RequestCodes.cs" />
     <Compile Include="Enums\RoleTypes.cs" />
     <Compile Include="Enums\SignInStatus.cs" />
@@ -96,6 +102,7 @@
     <Compile Include="Models\JobGroup.cs" />
     <Compile Include="Models\JobSuggestion.cs" />
     <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\NewChatModel.cs" />
     <Compile Include="Models\PersonalityType.cs" />
     <Compile Include="Models\Question.cs" />
     <Compile Include="Models\SignInModel.cs" />

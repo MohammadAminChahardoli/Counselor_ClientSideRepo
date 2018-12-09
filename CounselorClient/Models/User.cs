@@ -8,6 +8,7 @@ namespace CounselorClient.Models
 {
     class User
     {
+        public string UserId { get; set; }
         public int RoleId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

@@ -1,14 +1,8 @@
 ﻿using CounselorClient.ApiConnections;
 using CounselorClient.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using static CounselorClient.Classes.NetworkConnection;
 
 namespace CounselorClient.Forms
 {
@@ -43,7 +37,14 @@ namespace CounselorClient.Forms
         private void SignUp(User newUser)
         {
             labelWating.Visible = true;
-            UserSignUp.SignUp(newUser);
+            if (IsNetworkAvailable())
+            {
+                UserSignUp.SignUp(newUser);
+            }
+            else
+            {
+                MessageBox.Show("کاربر گرامی دستگاه به اینترنت متصل نیست");
+            }
         }
 
         private User GetUserModel()
@@ -124,6 +125,18 @@ namespace CounselorClient.Forms
                     }));
                 }
             }
+        }
+
+        private void textBoxPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void textBoxAge_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+                e.Handled = true;
         }
     }
 }

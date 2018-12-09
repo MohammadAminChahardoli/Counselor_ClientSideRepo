@@ -9,19 +9,9 @@ namespace CounselorClient.Models
     class Message
     {
         public int Id { get; set; }
-        public string Text { get; set; }
-        public string Date { get; set; }
-
-        internal Chat Chat
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-
-            set
-            {
-            }
-        }
+        public string ChatMessageText { get; set; }
+        public string ChatMessageDate { get; set; }
+        public string UserIdSender { get; set; }
+        public string UserIdReceiver { get; set; }
     }
 }

@@ -37,6 +37,7 @@
             this.labelWating = new System.Windows.Forms.Label();
             this.labelUserCaption = new System.Windows.Forms.Label();
             this.listBoxUsers = new System.Windows.Forms.ListBox();
+            this.buttonSendMessage = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelMessagesCaption
@@ -45,11 +46,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelMessagesCaption.BackColor = System.Drawing.Color.Linen;
             this.labelMessagesCaption.Font = new System.Drawing.Font("IRANSans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.labelMessagesCaption.Location = new System.Drawing.Point(12, 391);
+            this.labelMessagesCaption.Location = new System.Drawing.Point(479, 26);
             this.labelMessagesCaption.Name = "labelMessagesCaption";
-            this.labelMessagesCaption.Size = new System.Drawing.Size(1152, 26);
+            this.labelMessagesCaption.Size = new System.Drawing.Size(685, 26);
             this.labelMessagesCaption.TabIndex = 12;
-            this.labelMessagesCaption.Text = "لیست پیام ها";
+            this.labelMessagesCaption.Text = " پیام ها";
             this.labelMessagesCaption.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // listBoxMessages
@@ -57,9 +58,9 @@
             this.listBoxMessages.FormattingEnabled = true;
             this.listBoxMessages.HorizontalScrollbar = true;
             this.listBoxMessages.ItemHeight = 22;
-            this.listBoxMessages.Location = new System.Drawing.Point(12, 421);
+            this.listBoxMessages.Location = new System.Drawing.Point(479, 52);
             this.listBoxMessages.Name = "listBoxMessages";
-            this.listBoxMessages.Size = new System.Drawing.Size(1148, 180);
+            this.listBoxMessages.Size = new System.Drawing.Size(685, 334);
             this.listBoxMessages.TabIndex = 11;
             // 
             // labelChatsCaption
@@ -68,11 +69,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelChatsCaption.BackColor = System.Drawing.Color.Linen;
             this.labelChatsCaption.Font = new System.Drawing.Font("IRANSans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.labelChatsCaption.Location = new System.Drawing.Point(416, 23);
+            this.labelChatsCaption.Location = new System.Drawing.Point(283, 26);
             this.labelChatsCaption.Name = "labelChatsCaption";
             this.labelChatsCaption.Size = new System.Drawing.Size(190, 26);
             this.labelChatsCaption.TabIndex = 10;
-            this.labelChatsCaption.Text = "لیست چت ها";
+            this.labelChatsCaption.Text = " گفتگو ها";
             this.labelChatsCaption.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // listBoxChats
@@ -80,10 +81,11 @@
             this.listBoxChats.FormattingEnabled = true;
             this.listBoxChats.HorizontalScrollbar = true;
             this.listBoxChats.ItemHeight = 22;
-            this.listBoxChats.Location = new System.Drawing.Point(416, 53);
+            this.listBoxChats.Location = new System.Drawing.Point(283, 53);
             this.listBoxChats.Name = "listBoxChats";
             this.listBoxChats.Size = new System.Drawing.Size(190, 334);
             this.listBoxChats.TabIndex = 9;
+            this.listBoxChats.SelectedIndexChanged += new System.EventHandler(this.listBoxChats_SelectedIndexChanged);
             // 
             // labelQuestionsListCaption
             // 
@@ -91,28 +93,28 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelQuestionsListCaption.BackColor = System.Drawing.Color.Linen;
             this.labelQuestionsListCaption.Font = new System.Drawing.Font("IRANSans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.labelQuestionsListCaption.Location = new System.Drawing.Point(612, 23);
+            this.labelQuestionsListCaption.Location = new System.Drawing.Point(12, 404);
             this.labelQuestionsListCaption.Name = "labelQuestionsListCaption";
-            this.labelQuestionsListCaption.Size = new System.Drawing.Size(552, 26);
+            this.labelQuestionsListCaption.Size = new System.Drawing.Size(1152, 26);
             this.labelQuestionsListCaption.TabIndex = 8;
-            this.labelQuestionsListCaption.Text = "لیست سوالات";
-            this.labelQuestionsListCaption.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelQuestionsListCaption.Text = " سوالات";
+            this.labelQuestionsListCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // listBoxQuestions
             // 
             this.listBoxQuestions.FormattingEnabled = true;
             this.listBoxQuestions.HorizontalScrollbar = true;
             this.listBoxQuestions.ItemHeight = 22;
-            this.listBoxQuestions.Location = new System.Drawing.Point(612, 53);
+            this.listBoxQuestions.Location = new System.Drawing.Point(12, 430);
             this.listBoxQuestions.Name = "listBoxQuestions";
-            this.listBoxQuestions.Size = new System.Drawing.Size(552, 334);
+            this.listBoxQuestions.Size = new System.Drawing.Size(1152, 180);
             this.listBoxQuestions.TabIndex = 7;
             // 
             // labelWating
             // 
             this.labelWating.AutoSize = true;
             this.labelWating.ForeColor = System.Drawing.Color.Gold;
-            this.labelWating.Location = new System.Drawing.Point(533, -1);
+            this.labelWating.Location = new System.Drawing.Point(533, 0);
             this.labelWating.Name = "labelWating";
             this.labelWating.Size = new System.Drawing.Size(153, 22);
             this.labelWating.TabIndex = 25;
@@ -125,11 +127,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelUserCaption.BackColor = System.Drawing.Color.Linen;
             this.labelUserCaption.Font = new System.Drawing.Font("IRANSans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.labelUserCaption.Location = new System.Drawing.Point(220, 23);
+            this.labelUserCaption.Location = new System.Drawing.Point(12, 26);
             this.labelUserCaption.Name = "labelUserCaption";
             this.labelUserCaption.Size = new System.Drawing.Size(190, 26);
             this.labelUserCaption.TabIndex = 27;
-            this.labelUserCaption.Text = "لیست کاربران";
+            this.labelUserCaption.Text = " کاربران";
             this.labelUserCaption.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // listBoxUsers
@@ -137,17 +139,28 @@
             this.listBoxUsers.FormattingEnabled = true;
             this.listBoxUsers.HorizontalScrollbar = true;
             this.listBoxUsers.ItemHeight = 22;
-            this.listBoxUsers.Location = new System.Drawing.Point(220, 53);
+            this.listBoxUsers.Location = new System.Drawing.Point(12, 53);
             this.listBoxUsers.Name = "listBoxUsers";
             this.listBoxUsers.Size = new System.Drawing.Size(190, 334);
             this.listBoxUsers.TabIndex = 26;
+            // 
+            // buttonSendMessage
+            // 
+            this.buttonSendMessage.Location = new System.Drawing.Point(1089, 612);
+            this.buttonSendMessage.Name = "buttonSendMessage";
+            this.buttonSendMessage.Size = new System.Drawing.Size(75, 32);
+            this.buttonSendMessage.TabIndex = 28;
+            this.buttonSendMessage.Text = "ارسال پیام";
+            this.buttonSendMessage.UseVisualStyleBackColor = true;
+            this.buttonSendMessage.Click += new System.EventHandler(this.buttonSendMessage_Click);
             // 
             // ConsulatorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(1176, 618);
+            this.ClientSize = new System.Drawing.Size(1176, 647);
+            this.Controls.Add(this.buttonSendMessage);
             this.Controls.Add(this.labelUserCaption);
             this.Controls.Add(this.listBoxUsers);
             this.Controls.Add(this.labelWating);
@@ -164,7 +177,7 @@
             this.Name = "ConsulatorForm";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Load += new System.EventHandler(this.ConsulatorForm_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ConsulatorForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -181,5 +194,6 @@
         private System.Windows.Forms.Label labelWating;
         private System.Windows.Forms.Label labelUserCaption;
         private System.Windows.Forms.ListBox listBoxUsers;
+        private System.Windows.Forms.Button buttonSendMessage;
     }
 }

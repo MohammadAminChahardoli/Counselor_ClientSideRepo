@@ -1,14 +1,8 @@
 ﻿using CounselorClient.ApiConnections;
 using CounselorClient.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using static CounselorClient.Classes.NetworkConnection;
 
 namespace CounselorClient.Forms
 {
@@ -38,10 +32,18 @@ namespace CounselorClient.Forms
         private void SignIn(SignInModel info)
         {
             labelWating.Visible = true;
-            if (ValidatUserInfo(info))
-                UserSignIn.SignIn(info);
+            if(IsNetworkAvailable())
+            {
+                if (ValidatUserInfo(info))
+                    UserSignIn.SignIn(info);
+                else
+                    MessageBox.Show("لطفا همه مقادیر را به درستی واردی نمایید");
+            }
             else
-                MessageBox.Show("لطفا همه مقادیر را به درستی واردی نمایید");
+            {
+                MessageBox.Show("کاربر گرامی دستگاه شما به اینترنت متصل نیست");
+            }
+            
         }
 
         private SignInModel GetUserInfo()
@@ -60,6 +62,13 @@ namespace CounselorClient.Forms
                 textBoxPassword.Text != string.Empty);
         }
 
+        private void GetRoleType(int userId)
+        {
+            UserRoleType userRoleType = new UserRoleType();
+            userRoleType.Attach(this);
+            userRoleType.GetUserRoleId(userId);
+        }
+
         public void OnResponse(object response, RequestCodes requestCode)
         {
             if(requestCode == RequestCodes.UserSignedIn)
@@ -68,12 +77,7 @@ namespace CounselorClient.Forms
                 if (result > 0)
                 {
                     Program.UserId = int.Parse(response.ToString());
-                    this.Invoke(new Action(() =>
-                    {
-                        this.Hide();
-                        ConsultationRecipientForm recipientForm = new ConsultationRecipientForm();
-                        recipientForm.Show();
-                    }));
+                    GetRoleType(int.Parse(response.ToString()));
                 }
                 else if (result == (int)LoginStatus.WrongPasswordOrUserName)
                 {

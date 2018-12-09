@@ -129,6 +129,7 @@
             this.textBoxAge.Size = new System.Drawing.Size(183, 29);
             this.textBoxAge.TabIndex = 7;
             this.textBoxAge.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxAge.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAge_KeyPress);
             // 
             // labelUserName
             // 
@@ -163,6 +164,7 @@
             this.textBoxPassword.Size = new System.Drawing.Size(183, 29);
             this.textBoxPassword.TabIndex = 11;
             this.textBoxPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPassword_KeyPress);
             // 
             // buttonSignUp
             // 
