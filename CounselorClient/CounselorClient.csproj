@@ -62,6 +62,7 @@
     <Compile Include="ApiConnections\MessageDownloader.cs" />
     <Compile Include="ApiConnections\QuestionsDownloader.cs" />
     <Compile Include="ApiConnections\RecipentChatDownloader.cs" />
+    <Compile Include="ApiConnections\RobotMessageUploader.cs" />
     <Compile Include="ApiConnections\UserRoleType.cs" />
     <Compile Include="ApiConnections\UsersDownloader.cs" />
     <Compile Include="ApiConnections\UserSignUp.cs" />

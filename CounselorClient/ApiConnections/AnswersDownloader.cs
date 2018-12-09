@@ -33,7 +33,7 @@ namespace CounselorClient.ApiConnections
 
         private void NotifyObserver(List<string> result)
         {
-            AnswersObserver.OnResponse(result, RequestCodes.ChatsReceived);
+            AnswersObserver.OnResponse(result, RequestCodes.AnswersReceived);
         }
     }
 }

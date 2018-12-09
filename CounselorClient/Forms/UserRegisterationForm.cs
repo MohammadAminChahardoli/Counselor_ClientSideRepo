@@ -51,7 +51,7 @@ namespace CounselorClient.Forms
         {
             User newUser = new User
             {
-                RoleId = comboBoxRoleType.SelectedIndex,
+                RoleId = comboBoxRoleType.SelectedIndex == 1 ? 1 : 3,
                 FirstName = textBoxName.Text,
                 LastName = textBoxFamily.Text,
                 Age = textBoxAge.Text != string.Empty ? int.Parse(textBoxAge.Text) : 0,

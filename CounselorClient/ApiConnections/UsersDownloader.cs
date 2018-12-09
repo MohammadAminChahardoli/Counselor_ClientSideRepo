@@ -13,16 +13,16 @@ namespace CounselorClient.ApiConnections
         private IApiResponseObserver UsersObserver;
         private RestClient Client;
         private string BaseUrl = "https://mshf.ir/api/";
-        private string SignUpUrl = "v1/userslist/" + 13;
+        private string SignUpUrl = "v1/userslist/";
 
         public UsersDownloader()
         {
             Client = new RestClient(baseUrl: BaseUrl);
         }
 
-        public void GetUsers()
+        public void GetUsers(int userId)
         {
-            var request = new RestRequest(SignUpUrl, Method.GET);
+            var request = new RestRequest(SignUpUrl + userId, Method.GET);
             request.AddHeader("token", "aiteam2018");
             var asyncHandle = Client.ExecuteAsync<List<User>>(request, response =>
             {

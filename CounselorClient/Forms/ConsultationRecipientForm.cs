@@ -135,14 +135,18 @@ namespace CounselorClient.Forms
 
         private void FormUpdateTimer_Tick(object sender, EventArgs e)
         {
-            int selectedChatId = int.Parse(Chats[listBoxChats.SelectedIndex].ChatId);
-            ReloadMessages(selectedChatId);
+            if(listBoxChats.SelectedIndex != -1)
+            {
+                int selectedChatId = int.Parse(Chats[listBoxChats.SelectedIndex].ChatId);
+                ReloadMessages(selectedChatId);
+            }
         }
 
         private void ConsultationRecipientForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             FormUpdateTimer.Enabled = false;
             FormUpdateTimer.Dispose();
+            System.Environment.Exit(System.Environment.ExitCode);
         }
     }
 }

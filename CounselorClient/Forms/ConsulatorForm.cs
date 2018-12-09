@@ -2,6 +2,7 @@
 using CounselorClient.Models;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Windows.Forms;
 using static CounselorClient.Classes.NetworkConnection;
 
@@ -15,7 +16,7 @@ namespace CounselorClient.Forms
         List<Models.Message> Messages;
         private List<string> Answers;
         private string[] RobotWellcomeTexts;
-        private Timer FormUpdateTimer;
+        private System.Timers.Timer FormUpdateTimer;
         private const int FormUpdateInterval = 5000;
         private int CurrentRecipentUserId = 0;
         private Random RandomInstance;
@@ -54,7 +55,7 @@ namespace CounselorClient.Forms
         {
             UsersDownloader usersDownloader = new UsersDownloader();
             usersDownloader.Attach(this);
-            usersDownloader.GetUsers();
+            usersDownloader.GetUsers(Program.UserId);
             labelWating.Visible = true;
         }
 
@@ -78,7 +79,8 @@ namespace CounselorClient.Forms
         {
             NewChatModel newChat = new NewChatModel();
             newChat.ChatId = 0;
-            string messageText = "سلام، وقت بخیر... بنده مشاور شغلی شما هستم. بیایید درمورد شغل آینده شما صحبت کنیم لطفا به سوالاتی که میپرسم با دقت پاسخ دهید..";
+            //string messageText = "سلام، وقت بخیر... بنده مشاور شغلی شما هستم. بیایید درمورد شغل آینده شما صحبت کنیم لطفا به سوالاتی که میپرسم با دقت پاسخ دهید..";
+            string messageText = Questions[0].QuestionTitle;
             newChat.ChatMessageText = messageText;
             newChat.UserIdReciver = userIdReceiver;
             newChat.UserIdSender = Program.UserId;
@@ -118,7 +120,7 @@ namespace CounselorClient.Forms
             newChat.UserIdSender = senderId;
             newChat.UserIdStarter = senderId;
 
-            ChatUploader chatUploader = new ChatUploader();
+            RobotMessageUploader chatUploader = new RobotMessageUploader();
             chatUploader.Attach(this);
             chatUploader.InsertNewMessage(newChat);
         }
@@ -168,29 +170,7 @@ namespace CounselorClient.Forms
                     listBoxChats.Items.Add("گفتگوی شماره " + (i + 1));
                 }
                 listBoxChats.SelectedIndex = listBoxChats.Items.Count - 1;
-                
-                if (IsFirstMessage)
-                {
-                    if (Users[listBoxUsers.SelectedIndex].RoleId == (int)RoleTypes.RobotRole)
-                    {
-                        int questionId = int.Parse(Questions[listBoxQuestions.SelectedIndex].QuestionId);
-                        GetAnswers(questionId);
-                    }
-                }
-                else if(!IsFirstMessage)
-                {
-                    int randomNumber = RandomInstance.Next(0, RobotWellcomeTexts.Length - 1);
-                    try
-                    {
-                        int selectedChatId = int.Parse(Chats[listBoxChats.SelectedIndex].ChatId);
-                        int selectedUserId = int.Parse(Users[listBoxUsers.SelectedIndex].UserId);
-                        SendMessageFromRobot(selectedChatId, selectedUserId, RobotWellcomeTexts[randomNumber]);
-                    }
-                    catch
-                    {
-                        MessageBox.Show("خطایی رخ داده است.");
-                    }
-                }
+                listBoxChats.TopIndex = listBoxChats.Items.Count - 1;
             }
             else if (requestCode == RequestCodes.MessagesReceived)
             {
@@ -219,18 +199,18 @@ namespace CounselorClient.Forms
             }
             else if (requestCode == RequestCodes.AnswersReceived)
             {
-                Answers = (List<string>)response;
-                int randomNumber = RandomInstance.Next(0, Answers.Count - 1);
-                try
+                if(Users[listBoxUsers.SelectedIndex].RoleId == (int)RoleTypes.RobotRole)
                 {
-                    int selectedChatId = int.Parse(Chats[listBoxChats.SelectedIndex].ChatId);
-                    int selectedUserId = int.Parse(Users[listBoxUsers.SelectedIndex].UserId);
-                    SendMessageFromRobot(selectedChatId, selectedUserId, Answers[randomNumber]);
+                    Answers = (List<string>)response;
+                    int randomNumber = RandomInstance.Next(0, Answers.Count - 1);
+                    int randomDelay = RandomInstance.Next(7000, 15000);
+                    Thread.Sleep(randomDelay);
+                    SendMessageFromRobot(int.Parse(Chats[listBoxChats.SelectedIndex].ChatId), int.Parse(Users[listBoxUsers.SelectedIndex].UserId), Answers[randomNumber]);
                 }
-                catch
-                {
-                    MessageBox.Show("خطایی رخ داده است.");
-                }
+            }
+            else if (requestCode == RequestCodes.NewMessageSentFromRobot)
+            {
+                GetChats();
             }
         }
 
@@ -261,33 +241,35 @@ namespace CounselorClient.Forms
                 int selectedChatId = int.Parse(Chats[listBoxChats.SelectedIndex].ChatId);
                 int selectedUserId = int.Parse(Users[listBoxUsers.SelectedIndex].UserId);
                 SendNewMessage(selectedUserId, selectedChatId);
+                GetAnswers(int.Parse(Questions[listBoxQuestions.SelectedIndex].QuestionId));
             }
             catch
             {
                 MessageBox.Show("لطفا قبل از ارسال پیام ، کاربر گیرنده و چت مورد نظر را وارد نمایید.");
             }
-            
         }
 
         private void ConsulatorForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             FormUpdateTimer.Enabled = false;
             FormUpdateTimer.Dispose();
+            System.Environment.Exit(System.Environment.ExitCode);
         }
 
         private void InitializeTimer()
         {
-            FormUpdateTimer = new Timer();
+            FormUpdateTimer = new System.Timers.Timer();
             FormUpdateTimer.Interval = FormUpdateInterval;
-            FormUpdateTimer.Tick += FormUpdateTimer_Tick;
+            FormUpdateTimer.Elapsed += FormUpdateTimer_Elapsed;
             FormUpdateTimer.Start();
         }
-        private void FormUpdateTimer_Tick(object sender, EventArgs e)
+
+        private void FormUpdateTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            if(listBoxChats.SelectedIndex != -1)
+            if (listBoxChats.SelectedIndex != -1)
             {
                 int selectedChatId = int.Parse(Chats[listBoxChats.SelectedIndex].ChatId);
-                ReloadMessages(selectedChatId);
+            ReloadMessages(selectedChatId);
             }
         }
     }
