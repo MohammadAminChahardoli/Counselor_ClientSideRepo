@@ -9,6 +9,8 @@
     MessagesReceived = 7,
     NewMessageSent = 8,
     AnswersReceived = 9,
-    NewMessageSentFromRobot = 10
+    NewMessageSentFromRobot = 10,
+    ProperAnswerValidator = 11,
+    GetPersonalityInfo = 12
 }
 

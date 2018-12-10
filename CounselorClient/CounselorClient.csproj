@@ -32,6 +32,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <Win32Resource>
+    </Win32Resource>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>photo_2018-12-03_21-03-29.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -58,8 +65,10 @@
     <Compile Include="ApiConnections\AnswersDownloader.cs" />
     <Compile Include="ApiConnections\ChatDownloader.cs" />
     <Compile Include="ApiConnections\ChatUploader.cs" />
+    <Compile Include="ApiConnections\GetPerosonalityTypeInfo.cs" />
     <Compile Include="ApiConnections\IApiResponseObserver.cs" />
     <Compile Include="ApiConnections\MessageDownloader.cs" />
+    <Compile Include="ApiConnections\ProperAnswerValidator.cs" />
     <Compile Include="ApiConnections\QuestionsDownloader.cs" />
     <Compile Include="ApiConnections\RecipentChatDownloader.cs" />
     <Compile Include="ApiConnections\RobotMessageUploader.cs" />
@@ -90,6 +99,12 @@
     <Compile Include="Forms\SignInForm.Designer.cs">
       <DependentUpon>SignInForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\UserPersonalityForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UserPersonalityForm.designer.cs">
+      <DependentUpon>UserPersonalityForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\UserRegisterationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,16 +114,22 @@
     <Compile Include="Classes\JsonHandler.cs" />
     <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\Chat.cs" />
+    <Compile Include="Models\ExtractedProperAnswer.cs" />
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\JobGroup.cs" />
     <Compile Include="Models\JobSuggestion.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\NewChatModel.cs" />
+    <Compile Include="Models\PerosnalityTypeModel.cs" />
     <Compile Include="Models\PersonalityType.cs" />
+    <Compile Include="Models\ProperAnswerModel.cs" />
     <Compile Include="Models\Question.cs" />
+    <Compile Include="Models\QuizValidateModel.cs" />
+    <Compile Include="Classes\QuizValidator.cs" />
     <Compile Include="Models\SignInModel.cs" />
     <Compile Include="Models\Strength.Cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserPerosonalityTypeInfo.cs" />
     <Compile Include="Models\WeakPoint.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -121,6 +142,9 @@
     <EmbeddedResource Include="Forms\SignInForm.resx">
       <DependentUpon>SignInForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserPersonalityForm.resx">
+      <DependentUpon>UserPersonalityForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\UserRegisterationForm.resx">
       <DependentUpon>UserRegisterationForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -132,6 +156,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
@@ -147,6 +172,42 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\Actor.png" />
+    <Content Include="Images\Advocate.png" />
+    <Content Include="Images\Artisan.png" />
+    <Content Include="Images\Artist.png" />
+    <Content Include="Images\Commander.png" />
+    <Content Include="Images\Confidant.png" />
+    <Content Include="Images\Convincing.png" />
+    <Content Include="Images\Defender.png" />
+    <Content Include="Images\Dreamer.png" />
+    <Content Include="Images\Engineer.png" />
+    <Content Include="Images\Growth Coach.png" />
+    <Content Include="Images\Initaitor.png" />
+    <Content Include="Images\Inspector.png" />
+    <Content Include="Images\Programmer.png" />
+    <Content Include="Images\Supervisor.png" />
+    <Content Include="Images\Supporter.png" />
+    <Content Include="photo_2018-12-03_21-03-29.ico" />
+    <Content Include="Resources\Actor.png" />
+    <Content Include="Resources\Advocate.png" />
+    <Content Include="Resources\Artisan.png" />
+    <Content Include="Resources\Artist.png" />
+    <Content Include="Resources\Commander.png" />
+    <Content Include="Resources\Confidant.png" />
+    <Content Include="Resources\Convincing.png" />
+    <Content Include="Resources\Defender.png" />
+    <Content Include="Resources\Dreamer.png" />
+    <Content Include="Resources\Engineer.png" />
+    <Content Include="Resources\Growth Coach.png" />
+    <Content Include="Resources\Initaitor.png" />
+    <Content Include="Resources\Inspector.png" />
+    <Content Include="Resources\Programmer.png" />
+    <Content Include="Resources\Supervisor.png" />
+    <Content Include="Resources\Supporter.png" />
+    <None Include="Resources\photo_2018-12-03_21-03-29.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

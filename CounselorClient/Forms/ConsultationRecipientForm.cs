@@ -89,24 +89,29 @@ namespace CounselorClient.Forms
                 if (messages.Count > Messages.Count)
                 {
                     Messages = messages;
-                    listBoxMessages.Items.Clear();
-                    foreach (var message in Messages)
+                    if (Messages.Count != 0)
                     {
-                        if (int.Parse(message.UserIdSender) == Program.UserId)
+                        listBoxMessages.Items.Clear();
+                        foreach (var message in Messages)
                         {
-                            listBoxMessages.Items.Add("شما: " + message.ChatMessageText);
+                            if (int.Parse(message.UserIdSender) == Program.UserId)
+                            {
+                                listBoxMessages.Items.Add("شما: " + message.ChatMessageText);
+                            }
+                            else
+                            {
+                                listBoxMessages.Items.Add("مشاور: " + message.ChatMessageText);
+                            }
                         }
-                        else
-                        {
-                            listBoxMessages.Items.Add("مشاور: " + message.ChatMessageText);
-                        }
+                        listBoxMessages.TopIndex = listBoxMessages.Items.Count - 1;
                     }
-                    listBoxMessages.TopIndex = listBoxMessages.Items.Count - 1;
                 }
             }
             else if (requestCode == RequestCodes.NewMessageSent)
             {
                 GetChats();
+                labelSending.Visible = false;
+                buttonSendMessage.Enabled = true;
             }
         }
 
@@ -123,6 +128,8 @@ namespace CounselorClient.Forms
             int receiverId = int.Parse(Chats[listBoxChats.SelectedIndex].UserIdStarter);
             SendNewMessage(receiverId, chatId);
             textBoxMessage.Text = string.Empty;
+            labelSending.Visible = true;
+            buttonSendMessage.Enabled = false;
         }
 
         private void InitializeTimer()
@@ -147,6 +154,16 @@ namespace CounselorClient.Forms
             FormUpdateTimer.Enabled = false;
             FormUpdateTimer.Dispose();
             System.Environment.Exit(System.Environment.ExitCode);
+        }
+
+        private void ConsultationRecipientForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void linkLabel1Refresh_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            GetChats();
         }
     }
 }

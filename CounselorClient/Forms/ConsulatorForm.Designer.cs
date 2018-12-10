@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsulatorForm));
             this.labelMessagesCaption = new System.Windows.Forms.Label();
             this.listBoxMessages = new System.Windows.Forms.ListBox();
             this.labelChatsCaption = new System.Windows.Forms.Label();
@@ -38,6 +39,8 @@
             this.labelUserCaption = new System.Windows.Forms.Label();
             this.listBoxUsers = new System.Windows.Forms.ListBox();
             this.buttonSendMessage = new System.Windows.Forms.Button();
+            this.labelSending = new System.Windows.Forms.Label();
+            this.buttonEndChat = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelMessagesCaption
@@ -146,13 +149,34 @@
             // 
             // buttonSendMessage
             // 
-            this.buttonSendMessage.Location = new System.Drawing.Point(1089, 612);
+            this.buttonSendMessage.Location = new System.Drawing.Point(1064, 613);
             this.buttonSendMessage.Name = "buttonSendMessage";
-            this.buttonSendMessage.Size = new System.Drawing.Size(75, 32);
+            this.buttonSendMessage.Size = new System.Drawing.Size(100, 30);
             this.buttonSendMessage.TabIndex = 28;
             this.buttonSendMessage.Text = "ارسال پیام";
             this.buttonSendMessage.UseVisualStyleBackColor = true;
             this.buttonSendMessage.Click += new System.EventHandler(this.buttonSendMessage_Click);
+            // 
+            // labelSending
+            // 
+            this.labelSending.AutoSize = true;
+            this.labelSending.ForeColor = System.Drawing.Color.Gold;
+            this.labelSending.Location = new System.Drawing.Point(979, 616);
+            this.labelSending.Name = "labelSending";
+            this.labelSending.Size = new System.Drawing.Size(79, 22);
+            this.labelSending.TabIndex = 29;
+            this.labelSending.Text = "درحال ارسال...";
+            this.labelSending.Visible = false;
+            // 
+            // buttonEndChat
+            // 
+            this.buttonEndChat.Location = new System.Drawing.Point(12, 613);
+            this.buttonEndChat.Name = "buttonEndChat";
+            this.buttonEndChat.Size = new System.Drawing.Size(229, 30);
+            this.buttonEndChat.TabIndex = 30;
+            this.buttonEndChat.Text = "خاتمه دادن به گفتگو و نتیجه گیری";
+            this.buttonEndChat.UseVisualStyleBackColor = true;
+            this.buttonEndChat.Click += new System.EventHandler(this.buttonEndChat_Click);
             // 
             // ConsulatorForm
             // 
@@ -160,6 +184,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1176, 647);
+            this.Controls.Add(this.buttonEndChat);
+            this.Controls.Add(this.labelSending);
             this.Controls.Add(this.buttonSendMessage);
             this.Controls.Add(this.labelUserCaption);
             this.Controls.Add(this.listBoxUsers);
@@ -172,6 +198,7 @@
             this.Controls.Add(this.listBoxQuestions);
             this.Font = new System.Drawing.Font("IRANSans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.MaximizeBox = false;
             this.Name = "ConsulatorForm";
@@ -195,5 +222,7 @@
         private System.Windows.Forms.Label labelUserCaption;
         private System.Windows.Forms.ListBox listBoxUsers;
         private System.Windows.Forms.Button buttonSendMessage;
+        private System.Windows.Forms.Label labelSending;
+        private System.Windows.Forms.Button buttonEndChat;
     }
 }

@@ -17,7 +17,7 @@ namespace CounselorClient
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Forms.UserRegisterationForm());
+            Application.Run(new Forms.UserPersonalityForm());
         }
     }
 }
